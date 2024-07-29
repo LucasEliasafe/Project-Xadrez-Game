@@ -13,4 +13,12 @@ public class GamePanel extends JPanel {
         setBackground(Color.BLACK);
     }
 
+    private void update() {
+
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }
+
 }
