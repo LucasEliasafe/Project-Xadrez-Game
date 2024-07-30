@@ -1,7 +1,7 @@
 package main;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -9,6 +9,7 @@ public class GamePanel extends JPanel implements Runnable {
     public static final int HEIGHT = 800;
     final int FPS = 60;
     Thread gameThread;
+    Board board = new Board();
 
     public GamePanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -33,9 +34,12 @@ public class GamePanel extends JPanel implements Runnable {
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
 
-            if
+            if(delta >= 1) {
+                update();
+                repaint();
+                delta--;
+            }
         }
-
     }
 
     private void update() {
@@ -44,6 +48,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        board.draw(g2d);
     }
 
 }
