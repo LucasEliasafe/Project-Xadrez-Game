@@ -1,10 +1,13 @@
 package main;
 
 
+import piece.*;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -14,6 +17,9 @@ public class GamePanel extends JPanel implements Runnable {
     final int FPS = 60;
     Thread gameThread;
     Board board = new Board();
+
+    public static ArrayList<Piece> pieces = new ArrayList<>();
+    public static ArrayList<Piece> simPieces = new ArrayList<>();
 
     public static final int WHITE = 0;
     public static final int BLACK = 1;
@@ -27,6 +33,26 @@ public class GamePanel extends JPanel implements Runnable {
     public void launchGame() {
         gameThread = new Thread(this);
         gameThread.start();
+    }
+
+    public void setPiece() {
+
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Pawn(WHITE,0,6));
+        pieces.add(new Knight(WHITE,1,7));
+        pieces.add(new Knight(WHITE,1,7));
+        pieces.add(new Rook(WHITE,0,7));
+        pieces.add(new Rook(WHITE,0,7));
+        pieces.add(new Bishop(WHITE,2,7));
+        pieces.add(new Bishop(WHITE,2,7));
+        pieces.add(new Queen(WHITE,3,7));
+        pieces.add(new King(WHITE,4,7));
     }
 
     @Override
