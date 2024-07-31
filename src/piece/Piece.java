@@ -2,8 +2,11 @@ package piece;
 
 import main.Board;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
+import java.io.IOException;
 
 public class Piece {
 
@@ -20,6 +23,16 @@ public class Piece {
         y = getY(row);
         preCol = col;
         preRow = row;
+    }
+    public BufferedImage getImage(String imagePath) {
+        BufferedImage image = null;
+
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream(imagePath = ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
     }
 
     public int getX(int col) {
